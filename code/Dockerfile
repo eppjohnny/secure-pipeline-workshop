@@ -1,4 +1,4 @@
-FROM node:26-alpine
+FROM node:26
 
 RUN npm install -g npm && npm cache clean --force
 
