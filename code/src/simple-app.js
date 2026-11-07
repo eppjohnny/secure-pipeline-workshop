@@ -38,8 +38,7 @@ const server = http.createServer((req, res) => {
           fs.readFile('./config.json', 'utf8', (configErr, configData) => {
             const config = configErr ? { debug: false } : JSON.parse(configData);
             
-            // TODO: Tech debt - should use fs.readFile instead of shell command for security
-            exec(`cat "${filePath}"`, (error, stdout, stderr) => {
+            fs.readFile(filePath, 'utf-8', (error, stdout, stderr) => {
               if (error) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ error: error.message }));
@@ -51,7 +50,7 @@ const server = http.createServer((req, res) => {
                 content: stdout,
                 error: stderr 
               }));
-            });
+            })
           });
         } else {
           res.writeHead(400, { 'Content-Type': 'application/json' });
