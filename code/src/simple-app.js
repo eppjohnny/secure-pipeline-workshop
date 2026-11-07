@@ -38,17 +38,17 @@ const server = http.createServer((req, res) => {
           fs.readFile('./config.json', 'utf8', (configErr, configData) => {
             const config = configErr ? { debug: false } : JSON.parse(configData);
             
-            fs.readFile(filePath, 'utf-8', (error, stdout, stderr) => {
+            fs.readFile(filePath, 'utf-8', (error, fileContents) => {
               if (error) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: error.message }));
+                res.end(JSON.stringify({ error: error }));
                 return;
               }
               res.writeHead(200, { 'Content-Type': 'application/json' });
               res.end(JSON.stringify({ 
                 config: config,
-                content: stdout,
-                error: stderr 
+                content: fileContents,
+                error: error 
               }));
             })
           });
