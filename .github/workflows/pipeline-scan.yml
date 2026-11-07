@@ -25,6 +25,9 @@ jobs:
       - name: Install Prowler
         run: |
             pipx install prowler
+
+      - name: Check prowler version
+        run: |
             prowler -v
 
       - name: Run Prowler
