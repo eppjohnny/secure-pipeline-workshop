@@ -1,4 +1,6 @@
-FROM node:26
+FROM node:26-alpine
+
+RUN apk add --no-cache zlib=1.4-r0
 
 RUN npm install -g npm && npm cache clean --force
 
