@@ -10,8 +10,7 @@ permissions:
 jobs:
   # 🚧 REPLACE THE JOB SECTION WITH WORKSHOP CONTENT! 🚧
   # Copy from: workshop/code_scan/sast/{tool}/workflow.yml 
-  sast-scan:
-    codeql-scan:
+  codeql-scan:
     name: CodeQL SAST Scan
     runs-on: ubuntu-latest
     permissions:
