@@ -13,7 +13,7 @@ jobs:
 
   repository-scan:
     name: Repository Scan with Prowler
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     outputs:
       result: ${{ steps.scan-result.outputs.result }}
     steps:
